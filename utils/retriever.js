@@ -5,7 +5,8 @@ import { createClient } from "@supabase/supabase-js"
 // HuggingFace embeddings
 const embeddings = new HuggingFaceInferenceEmbeddings({
   apiKey: import.meta.env.VITE_HUGGINGFACE_API_KEY,
-  model: "sentence-transformers/all-MiniLM-L6-v2"
+  model: "sentence-transformers/all-MiniLM-L6-v2",
+  timeout: 10000
 })
 
 // Supabase credentials
