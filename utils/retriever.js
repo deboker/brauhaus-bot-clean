@@ -22,7 +22,8 @@ const vectorStore = new SupabaseVectorStore(embeddings, {
 })
 
 const retriever = vectorStore.asRetriever({
-  k: 4
+  k: 4,
+  searchType: "similarity"
 })
 
 export { retriever }
