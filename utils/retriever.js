@@ -16,14 +16,12 @@ const client = createClient(sbUrl, sbApiKey)
 
 // Vector store
 const vectorStore = new SupabaseVectorStore(embeddings, {
-  client: client,
+  client,
   tableName: "documents",
   queryName: "match_documents"
 })
 
-const retriever = vectorStore.asRetriever({
-  k: 4,
-  searchType: "similarity"
-})
+// retriever
+const retriever = vectorStore.asRetriever(4)
 
 export { retriever }
