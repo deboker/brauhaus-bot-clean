@@ -74,7 +74,7 @@ const standaloneQuestionChain = standaloneQuestionPrompt
     .pipe(new StringOutputParser())
 
 const retrieverChain = RunnableSequence.from([
-  ({ standalone_question }) => standalone_question,
+  (input) => input.standalone_question,   // vezme otázku zo vstupu
   async (question) => {
     console.log("QUESTION:", question)
 
