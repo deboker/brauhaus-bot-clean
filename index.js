@@ -74,9 +74,17 @@ const standaloneQuestionChain = standaloneQuestionPrompt
     .pipe(new StringOutputParser())
 
 const retrieverChain = RunnableSequence.from([
-    prevResult => prevResult.standalone_question,
-    retriever,
-    combineDocuments
+  ({ standalone_question }) => standalone_question,
+  async (question) => {
+    console.log("QUESTION:", question)
+
+    const docs = await retriever.invoke(question)
+
+    console.log("DOCS:", docs)
+
+    return docs
+  },
+  combineDocuments
 ])
 
 const answerChain = answerPrompt
