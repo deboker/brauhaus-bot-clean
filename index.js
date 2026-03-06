@@ -48,10 +48,7 @@ document.addEventListener('submit', (e) => {
 })
 
 const groqApiKey = import.meta.env.VITE_GROQ_API_KEY
-console.log(
-  "Groq key loaded (truncated):",
-  `${groqApiKey?.slice(0,7)}...${groqApiKey?.slice(-4)}`
-)
+
 
 const llm = new ChatGroq({
   apiKey: groqApiKey,
